@@ -16,8 +16,10 @@
 
 set -exu
 
-ARROW_REPO=https://github.com/apache/arrow.git
-ARROW_BRANCH=apache-arrow-12.0.0
+# ARROW_REPO=https://github.com/apache/arrow.git
+# ARROW_BRANCH=apache-arrow-12.0.0
+ARROW_REPO=https://github.com/klmckeig/arrow-fork.git
+ARROW_BRANCH=baseline
 ARROW_HOME=""
 
 for arg in "$@"; do
