@@ -23,8 +23,8 @@ macro(build_qatzstd)
 
   message(STATUS "Building QAT-ZSTD from source")
   set(QATZSTD_SOURCE_URL
-      "https://github.com/marin-ma/QAT-ZSTD-Plugin.git")
-  set(QATZSTD_SOURCE_BRANCH "fix-duplicate-symbol")
+      "https://github.com/intel-collab/applications.qat.shims.zstandard.qatzstdplugin.git")
+  set(QATZSTD_SOURCE_BRANCH "118cc226e8e8b539a5b349f5876fc21d8e4d1c1a")
   set(QATZSTD_LIB_NAME "qatseqprod")
 
   set(QATZSTD_PREFIX
@@ -33,7 +33,7 @@ macro(build_qatzstd)
   set(QATZSTD_INCLUDE_DIR "${QATZSTD_SOURCE_DIR}/src")
   set(QATZSTD_STATIC_LIB_NAME "${CMAKE_STATIC_LIBRARY_PREFIX}${QATZSTD_LIB_NAME}${CMAKE_STATIC_LIBRARY_SUFFIX}")
   set(QATZSTD_STATIC_LIB_TARGETS "${QATZSTD_SOURCE_DIR}/src/${QATZSTD_STATIC_LIB_NAME}")
-  set(QATZSTD_MAKE_ARGS "ENABLE_USDM_DRV=1" "ZSTDLIB=${ZSTD_INCLUDE_DIR}")
+  set(QATZSTD_MAKE_ARGS "ENABLE_USDM_DRV=1" "ZSTDLIB=${ZSTD_INCLUDE_DIR}" "DEBUGLEVEL=1")
 
   ExternalProject_Add(qatzstd_ep
       PREFIX ${QATZSTD_PREFIX}
@@ -44,7 +44,8 @@ macro(build_qatzstd)
       BUILD_COMMAND $(MAKE) ${QATZSTD_MAKE_ARGS}
       INSTALL_COMMAND ""
       BUILD_BYPRODUCTS ${QATZSTD_STATIC_LIB_TARGETS}
-      BUILD_IN_SOURCE 1)
+      BUILD_IN_SOURCE 1
+      UPDATE_COMMAND "")
 
   add_library(qatzstd::qatzstd STATIC IMPORTED)
 
