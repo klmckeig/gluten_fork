@@ -23,8 +23,8 @@ macro(build_qatzstd)
 
   message(STATUS "Building QAT-ZSTD from source")
   set(QATZSTD_SOURCE_URL
-      "https://github.com/intel-collab/applications.qat.shims.zstandard.qatzstdplugin.git")
-  set(QATZSTD_SOURCE_BRANCH "118cc226e8e8b539a5b349f5876fc21d8e4d1c1a")
+      "https://github.com/intel/QAT-ZSTD-Plugin.git")
+  set(QATZSTD_SOURCE_BRANCH "e5a134e12d2ea8a5b0f3b83c5b1c325fda4eb0a8")
   set(QATZSTD_LIB_NAME "qatseqprod")
 
   set(QATZSTD_PREFIX
